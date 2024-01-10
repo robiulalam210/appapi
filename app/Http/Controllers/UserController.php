@@ -77,8 +77,7 @@ class UserController extends Controller
     
             $customMessage = [
                 'name.required' => 'Name is required',
-                // 'email.required' => 'Email is required',
-                // 'email.email' => 'Invalid email format',
+               
                 // 'email.unique' => 'Email is already in use',
                 'password.required' => 'Password is required',
                 'password.min' => 'Password must be at least 8 characters',
