@@ -23,3 +23,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::get('/getuser',[UserController::class,'getuser']);
 Route::post('/adduser',[UserController::class,'addUser']);
+Route::put('/updateuser/{id}',[UserApiController::class,'updateuser']);
+Route::patch('/updatesingledata/{id}',[UserApiController::class,'updatesingledata']);
+Route::delete('/deletduser/{id}',[UserApiController::class,'deletduser']);
+
