@@ -71,14 +71,12 @@ class UserController extends Controller
     
             $rules = [
                 'name' => 'required',
-                // 'email' => 'required|email|unique:users,email', // Added email validation
                 'password' => 'required|min:8', // You might want to add more password rules
             ];
     
             $customMessage = [
                 'name.required' => 'Name is required',
                
-                // 'email.unique' => 'Email is already in use',
                 'password.required' => 'Password is required',
                 'password.min' => 'Password must be at least 8 characters',
             ];
