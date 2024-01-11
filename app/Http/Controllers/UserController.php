@@ -26,6 +26,8 @@ class UserController extends Controller
             $rules = [
                 'name' => 'required',
                 'email' => 'required|email|unique:users,email', // Added email validation
+                'dob' => 'required', 
+                'images' => 'required', 
                 'password' => 'required|min:8', // You might want to add more password rules
             ];
     
