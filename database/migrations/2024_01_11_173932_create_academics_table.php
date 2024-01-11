@@ -13,6 +13,12 @@ return new class extends Migration
     {
         Schema::create('academics', function (Blueprint $table) {
             $table->id();
+            $table->string('degree');
+            $table->string('country');
+            $table->string('passingyear');
+            $table->string('city');
+            $table->string('result');
+            $table->string('institution');
             $table->timestamps();
         });
     }
