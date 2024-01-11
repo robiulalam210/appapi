@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Academics;
+use App\Models\Academic;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\ValidationException;
 class AcademicsController extends Controller
@@ -22,13 +22,12 @@ class AcademicsController extends Controller
                 'passingyear' => 'required',
                 'city' => 'required',
                 'result' => 'required',
-                'degree' => 'required',
-                'degree' => 'required',
+                'institution' => 'required',
                  // You might want to add more password rules
             ];
 
             $customMessage = [
-                'name.required' => 'Name is required',    
+                'degree.required' => 'Name is required',    
             ];
     
             $validator = Validator::make($data, $rules, $customMessage);
@@ -37,7 +36,7 @@ class AcademicsController extends Controller
             try {
                 $validator->validate();
             
-                $user = new Academics();
+                $user = new Academic();
                
                 $user->degree = $data['degree'];
                 $user->country = $data['country'];
