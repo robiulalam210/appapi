@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('gender');
             $table->string('religion');
             $table->string('nid_smart');
-            // $table->string('images')->nullable();
+            $table->string('images')->nullable();
             $table->string('mobile');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();

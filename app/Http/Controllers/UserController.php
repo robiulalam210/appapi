@@ -27,7 +27,7 @@ class UserController extends Controller
                 'name' => 'required',
                 'email' => 'required|email|unique:users,email', // Added email validation
                 'dob' => 'required', 
-                // 'images' => 'required', 
+                'images' => 'required', 
                 'blood_group' => 'required', 
                 'gender' => 'required', 
                 'religion' => 'required', 
@@ -60,6 +60,7 @@ class UserController extends Controller
                 $user->name = $data['name'];
                 $user->email = $data['email'];
                 $user->dob = $data['dob'];
+                $user->images = $data['images'];
                 $user->blood_group = $data['blood_group'];
                 $user->gender = $data['gender'];
                 $user->religion = $data['religion'];
