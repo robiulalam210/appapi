@@ -56,6 +56,7 @@ class UserController extends Controller
     
                 // Create and save the user
                 $user = new User();
+                $user->title = $data['title'];
                 $user->name = $data['name'];
                 $user->email = $data['email'];
                 $user->dob = $data['dob'];
