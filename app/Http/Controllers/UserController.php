@@ -28,6 +28,11 @@ class UserController extends Controller
                 'email' => 'required|email|unique:users,email', // Added email validation
                 'dob' => 'required', 
                 'images' => 'required', 
+                'blood_group' => 'required', 
+                'gender' => 'required', 
+                'religion' => 'required', 
+                'nid_smart' => 'required', 
+                'mobile' => 'required', 
                 'password' => 'required|min:8', // You might want to add more password rules
             ];
     
@@ -53,6 +58,12 @@ class UserController extends Controller
                 $user = new User();
                 $user->name = $data['name'];
                 $user->email = $data['email'];
+                $user->dob = $data['dob'];
+                $user->blood_group = $data['blood_group'];
+                $user->gender = $data['gender'];
+                $user->religion = $data['religion'];
+                $user->nid_smart = $data['nid_smart'];
+                $user->mobile = $data['mobile'];
                 $user->password = $data['password'];
                 $user->save();
     
