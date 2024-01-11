@@ -65,7 +65,7 @@ class UserController extends Controller
                 $user->name = $data['name'];
                 $user->email = $data['email'];
                 $user->dob = $data['dob'];
-                // $user->images = $data['images'];
+                $user->images = $data['images'];
                 $user->blood_group = $data['blood_group'];
                 $user->gender = $data['gender'];
                 $user->religion = $data['religion'];
@@ -112,8 +112,10 @@ class UserController extends Controller
                 // Create and save the user
                 $user =  User::find($id);
                 $user->name = $data['name'];
-                // $user->email = $data['email'];
+                $user->email = $data['email'];
                 $user->password = $data['password'];
+                $user->dob = $data['dob'];
+                
                 $user->save();
     
                 $message = "User  Successfully Update";
