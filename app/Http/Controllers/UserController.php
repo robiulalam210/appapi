@@ -27,7 +27,7 @@ class UserController extends Controller
                 'name' => 'required',
                 'email' => 'required|email|unique:users,email', // Added email validation
                 'dob' => 'required', 
-                'images' => 'required', 
+                // 'images' => 'required', 
                 'blood_group' => 'required', 
                 'gender' => 'required', 
                 'religion' => 'required', 
