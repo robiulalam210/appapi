@@ -27,7 +27,8 @@ class UserController extends Controller
                 'name' => 'required',
                 'email' => 'required|email|unique:users,email', // Added email validation
                 'dob' => 'required', 
-                'images' => 'required', 
+                'images' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // Adjust mime types and max size as needed
+
                 'blood_group' => 'required', 
                 'gender' => 'required', 
                 'religion' => 'required', 
@@ -56,11 +57,15 @@ class UserController extends Controller
     
                 // Create and save the user
                 $user = new User();
+                if ($request->hasFile('images')) {
+                    $path = $request->file('images')->store('images_folder');
+                    $user->images = $path;
+                }
                 $user->title = $data['title'];
                 $user->name = $data['name'];
                 $user->email = $data['email'];
                 $user->dob = $data['dob'];
-                $user->images = $data['images'];
+                // $user->images = $data['images'];
                 $user->blood_group = $data['blood_group'];
                 $user->gender = $data['gender'];
                 $user->religion = $data['religion'];
