@@ -14,7 +14,7 @@ class UserController extends Controller
 
     public function getuser(){
 
-        $users=User::get();
+        $users=User::with('academics')->get();
         return response()->json(['users'=>$users],200);
 
     }
@@ -58,10 +58,10 @@ class UserController extends Controller
     
                 // Create and save the user
                 $user = new User();
-                if ($request->hasFile('images')) {
-                    $path = $request->file('images')->store('images_folder');
-                    $user->images = $path;
-                }
+                // if ($request->hasFile('images')) {
+                //     $path = $request->file('images')->store('images_folder');
+                //     $user->images = $path;
+                // }
                 $user->title = $data['title'];
                 $user->name = $data['name'];
                 $user->email = $data['email'];
@@ -73,7 +73,12 @@ class UserController extends Controller
                 $user->nid_smart = $data['nid_smart'];
                 $user->mobile = $data['mobile'];
                 $user->password = $data['password'];
-                $user->save();
+                if ($request->hasFile('images')) {
+                    $path = $request->file('images')->store('images_folder');
+                    $user->images = $path;
+                    $user->save();
+                }
+                // $user->save();
     
                 $message = "User Successfully Added";
                 return response()->json(['message' => $message,'users'=>$user], 201);
