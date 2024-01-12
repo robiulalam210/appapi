@@ -27,5 +27,7 @@ Route::put('/updateuser/{id}',[UserController::class,'updateuser']);
 Route::patch('/updatesingledata/{id}',[UserController::class,'updatesingledata']);
 Route::delete('/deletduser/{id}',[UserController::class,'deletduser']);
 
-Route::post('/academics}',[UserController::class,'academics_stor']);
+Route::post('/academics_stor',[UserController::class,'academics_stor']);
+// Route::post('/academics',[AcademicsController::class,'academics']);
+
 

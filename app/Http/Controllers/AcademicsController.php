@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\ValidationException;
 class AcademicsController extends Controller
 {
-    //
+    
 
     public function academics_stor(Request $request)
     {
