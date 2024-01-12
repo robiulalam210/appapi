@@ -19,7 +19,10 @@ return new class extends Migration
             $table->string('city');
             $table->string('result');
             $table->string('institution');
+            $table->unsignedBigInteger('user_id'); // foreign key
             $table->timestamps();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+
         });
     }
 

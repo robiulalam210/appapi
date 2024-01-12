@@ -23,7 +23,6 @@ class AcademicsController extends Controller
                 'city' => 'required',
                 'result' => 'required',
                 'institution' => 'required',
-                 // You might want to add more password rules
             ];
 
             $customMessage = [
