@@ -10,6 +10,14 @@ class AcademicsController extends Controller
 {
     
 
+    public function academics_show(Request $request,$id=null){
+
+        if($id==null){
+            $academic=Academic::get();
+            return response()->json([$academic],200);
+        }
+
+    }
     public function academics_stor(Request $request)
     {
         if ($request->isMethod('post')) {
