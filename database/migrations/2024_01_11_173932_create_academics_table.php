@@ -15,15 +15,17 @@ return new class extends Migration
             $table->id();
             $table->string('degree');
             $table->string('country');
+            $table->foreignId('user_id')->nullable()->constrained()->onDelete('cascade');
+
             $table->string('passingyear');
             $table->string('city');
             $table->string('result');
             $table->string('institution');
-            $table->unsignedBigInteger('user_id'); // foreign key
-            $table->timestamps();
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
 
+        
+            $table->timestamps();
         });
+        
     }
 
     /**

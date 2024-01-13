@@ -23,6 +23,7 @@ class AcademicsController extends Controller
                 'city' => 'required',
                 'result' => 'required',
                 'institution' => 'required',
+                'user_id' => 'required',
             ];
 
             $customMessage = [
@@ -43,6 +44,7 @@ class AcademicsController extends Controller
                 $user->city = $data['city'];
                 $user->result = $data['result'];
                 $user->institution = $data['institution'];
+                $user->user_id = $data['user_id'];
             
                 $user->save();
     
