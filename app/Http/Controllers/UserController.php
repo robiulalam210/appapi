@@ -12,10 +12,17 @@ class UserController extends Controller
 {
     //
 
-    public function getuser(){
+    public function getuser($id=null){
 
-        $users=User::with('academics')->get();
+        if($id==null){
+
+            $users=User::with('academics')->get();
+            return response()->json(['users'=>$users],200);
+        }else {
+            $users=User::find($id)->with('academics')->get();
         return response()->json(['users'=>$users],200);
+
+        }
 
     }
     public function addUser(Request $request)
