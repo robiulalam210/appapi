@@ -14,8 +14,19 @@ class AcademicsController extends Controller
 
         if($id==null){
             $academic=Academic::get();
-            return response()->json([$academic],200);
+        }else{
+            $academic=Academic::find($id);
+            if(!$academic){
+                return response()->json(["No Data"],200);
+
+
+            }
+            $academic=[$academic];
+
+
         }
+        return response()->json([$academic],200);
+
 
     }
     public function academics_stor(Request $request)

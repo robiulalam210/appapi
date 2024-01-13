@@ -189,10 +189,10 @@ class UserController extends Controller
         }
     }
     public function deletduser($id=null){
-        User::findorFail($id)->delete();
+      $daata=  User::findorFail($id)->delete();
         $message="User Succesfully Deleted";
 
-        return response()->json(['message'=>$message],200);
+        return response()->json(['message'=>$message,"data"=>$daata],200);
     }
 
 
