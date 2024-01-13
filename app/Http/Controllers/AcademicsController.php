@@ -25,8 +25,7 @@ class AcademicsController extends Controller
 
 
         }
-        return response()->json([$academic],200);
-
+        
 
     }
     public function academics_stor(Request $request)

@@ -2,7 +2,8 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\{UserController,AcademicsController};
+use App\Http\Controllers\{UserController,AcademicsController,ImageController};
+
 
 
 /*
@@ -32,5 +33,8 @@ Route::delete('/deletduser/{id}',[UserController::class,'deletduser']);
 Route::post('/academics_stor',[AcademicsController::class,'academics_stor']);
 Route::get('/academics_show/{id?}',[AcademicsController::class,'academics_show']);
 // Route::post('/academics',[AcademicsController::class,'academics']);
+
+Route::post('/uploadImages', [ImageController::class, 'uploadImages']);
+
 
 
