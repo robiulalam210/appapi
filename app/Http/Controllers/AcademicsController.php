@@ -54,4 +54,55 @@ class AcademicsController extends Controller
             }
         }
     }
+
+
+    public function uploadImages(Request $request)
+{
+    $request->validate([
+        'user_id' => 'required|exists:users,id',
+        'images.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+    ]);
+
+    $user = User::find($request->user_id);
+
+    if (!$user) {
+        return response()->json(['error' => 'User not found'], 404);
+    }
+
+    $uploadedImages = [];
+
+    foreach ($request->file('images') as $image) {
+        $path = $image->store('images');
+        $uploadedImages[] = $user->images()->create(['file_path' => $path])->id;
+    }
+
+    return response()->json(['message' => 'Images uploaded successfully', 'image_ids' => $uploadedImages], 200);
+}
+
+
+public function uploadImagess(Request $request)
+{
+    $request->validate([
+        'user_id' => 'required|exists:users,id',
+        'images.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        'titles.*' => 'string|max:255',
+    ]);
+
+    $user = User::find($request->user_id);
+
+    if (!$user) {
+        return response()->json(['error' => 'User not found'], 404);
+    }
+
+    $uploadedImages = [];
+
+    foreach ($request->file('images') as $key => $image) {
+        $path = $image->store('images');
+        $title = $request->input('titles.' . $key);
+
+        $uploadedImages[] = $user->images()->create(['file_path' => $path, 'title' => $title])->id;
+    }
+
+    return response()->json(['message' => 'Images uploaded successfully', 'image_ids' => $uploadedImages], 200);
+}
 }

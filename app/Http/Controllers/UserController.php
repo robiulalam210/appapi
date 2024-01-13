@@ -12,19 +12,25 @@ class UserController extends Controller
 {
     //
 
-    public function getuser($id=null){
+    public function getuser(Request $request, $id = null)
+{
+    if ($id === null) {
+        $users = User::with('academics')->get();
+    } else {
+        $user = User::with('academics')->find($id);
 
-        if($id==null){
-
-            $users=User::with('academics')->get();
-            return response()->json(['users'=>$users],200);
-        }else {
-            $users=User::find($id)->with('academics')->get();
-        return response()->json(['users'=>$users],200);
-
+        if (!$user) {
+            return response()->json(['error' => 'User not found'], 404);
         }
 
+        $users = [$user];
     }
+
+    $message="User Data get";
+
+    return response()->json(['message'=>$message,'users' => $users], 200);
+}
+
     public function addUser(Request $request)
     {
         if ($request->isMethod('post')) {
