@@ -36,5 +36,8 @@ Route::get('/academics_show/{id?}',[AcademicsController::class,'academics_show']
 
 Route::post('/uploadImages', [ImageController::class, 'uploadImages']);
 
+Route::post('/workexperience_stor',[WorkExperienceController::class,'workexperience_stor']);
+
+
 
 
