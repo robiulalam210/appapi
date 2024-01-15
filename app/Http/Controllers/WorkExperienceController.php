@@ -8,6 +8,7 @@ use Illuminate\Validation\ValidationException;
 use App\Models\WorkExperience;
 
 
+
 class WorkExperienceController extends Controller
 {
     //
@@ -16,32 +17,34 @@ class WorkExperienceController extends Controller
     {
         if ($request->isMethod('post')) {
             $data = $request->all();
-
-        
     
             $rules = [
                 'user_id' => 'required',
                 'startdate' => 'required',
-                // 'enddate' => 'required',
+                'enddate' => 'required',
                 'company' => 'required',
                 'title' => 'required',
                 
             ];
 
             $customMessage = [
-                'degree.required' => 'Name is required',    
+                'title.required' => 'title is required',    
             ];
     
             $validator = Validator::make($data, $rules, $customMessage);
     
 
             try {
+                
                 $validator->validate();
             
                 $user = new WorkExperience();
                
                 $user->user_id = $data['user_id'];
                 $user->startdate = $data['startdate'];
+                $user->enddate = $data['enddate'];
+                $user->company = $data['company'];
+                $user->title = $data['title'];
                
             
                 $user->save();
