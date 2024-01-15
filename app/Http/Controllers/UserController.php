@@ -71,10 +71,7 @@ class UserController extends Controller
     
                 // Create and save the user
                 $user = new User();
-                // if ($request->hasFile('images')) {
-                //     $path = $request->file('images')->store('images_folder');
-                //     $user->images = $path;
-                // }
+                
                 $user->title = $data['title'];
                 $user->name = $data['name'];
                 $user->email = $data['email'];
@@ -91,7 +88,6 @@ class UserController extends Controller
                     $user->images = $path;
                     $user->save();
                 }
-                // $user->save();
     
                 $message = "User Successfully Added";
                 return response()->json(['message' => $message,'users'=>$user], 201);
@@ -152,17 +148,12 @@ class UserController extends Controller
     
             $rules = [
                 'name' => 'required',
-                // 'email' => 'required|email|unique:users,email', // Added email validation
-                // 'password' => 'required|min:8', // You might want to add more password rules
+              
             ];
     
             $customMessage = [
                 'name.required' => 'Name is required',
-                // 'email.required' => 'Email is required',
-                // 'email.email' => 'Invalid email format',
-                // 'email.unique' => 'Email is already in use',
-                // 'password.required' => 'Password is required',
-                // 'password.min' => 'Password must be at least 8 characters',
+                
             ];
     
             $validator = Validator::make($data, $rules, $customMessage);
@@ -170,14 +161,11 @@ class UserController extends Controller
             try {
                 $validator->validate();
                 
-                // Hash the password before saving
-                // $data['password'] = bcrypt($data['password']);
-    
+                
                 // Create and save the user
                 $user =  User::find($id);
                 $user->name = $data['name'];
-                // $user->email = $data['email'];
-                // $user->password = $data['password'];
+               
                 $user->save();
     
                 $message = "User  Successfully Update";
