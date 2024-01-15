@@ -7,4 +7,6 @@ use Illuminate\Http\Request;
 class WorkExperienceController extends Controller
 {
     //
+
+    
 }
