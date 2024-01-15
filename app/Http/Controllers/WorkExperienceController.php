@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\ValidationException;
+use App\Models\WorkExperience;
+
 
 class WorkExperienceController extends Controller
 {
@@ -13,16 +17,12 @@ class WorkExperienceController extends Controller
         if ($request->isMethod('post')) {
             $data = $request->all();
 
-            $table->foreignId('user_id')->nullable()->constrained()->onDelete('cascade');
-            $table->date('startdate')->nullable();
-            $table->date('enddate')->nullable();
-            $table->string('company')->nullable();
-            $table->string('title')->nullable();
+        
     
             $rules = [
                 'user_id' => 'required',
                 'startdate' => 'required',
-                'enddate' => 'required',
+                // 'enddate' => 'required',
                 'company' => 'required',
                 'title' => 'required',
                 
