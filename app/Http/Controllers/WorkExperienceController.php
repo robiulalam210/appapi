@@ -38,19 +38,15 @@ class WorkExperienceController extends Controller
             try {
                 $validator->validate();
             
-                $user = new Academic();
+                $user = new WorkExperience();
                
-                $user->degree = $data['degree'];
-                $user->country = $data['country'];
-                $user->passingyear = $data['passingyear'];
-                $user->city = $data['city'];
-                $user->result = $data['result'];
-                $user->institution = $data['institution'];
                 $user->user_id = $data['user_id'];
+                $user->startdate = $data['startdate'];
+               
             
                 $user->save();
     
-                $message = "Academics Successfully Added";
+                $message = "WorkExperience Successfully Added";
                 return response()->json(['message' => $message,'users'=>$user], 201);
             } catch (ValidationException $e) {
                 // Handle validation errors
