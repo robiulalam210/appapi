@@ -8,20 +8,24 @@ class WorkExperienceController extends Controller
 {
     //
 
-    public function academics_stor(Request $request)
+    public function workexperience_stor(Request $request)
     {
         if ($request->isMethod('post')) {
             $data = $request->all();
 
+            $table->foreignId('user_id')->nullable()->constrained()->onDelete('cascade');
+            $table->date('startdate')->nullable();
+            $table->date('enddate')->nullable();
+            $table->string('company')->nullable();
+            $table->string('title')->nullable();
     
             $rules = [
-                'degree' => 'required',
-                'country' => 'required',
-                'passingyear' => 'required',
-                'city' => 'required',
-                'result' => 'required',
-                'institution' => 'required',
                 'user_id' => 'required',
+                'startdate' => 'required',
+                'enddate' => 'required',
+                'company' => 'required',
+                'title' => 'required',
+                
             ];
 
             $customMessage = [
