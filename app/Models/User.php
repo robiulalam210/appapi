@@ -53,5 +53,8 @@ class User extends Authenticatable
         return $this->hasMany(Image::class);
     }
     
+    public function workexprence(){
+        return $this->hasOne(WorkExperience::class);
+    }
     
 }
