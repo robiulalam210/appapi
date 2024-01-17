@@ -10,24 +10,22 @@ class AcademicsController extends Controller
 {
     
 
-    public function academics_show(Request $request,$id=null){
-
-        if($id==null){
-            $academic=Academic::get();
-        }else{
-            $academic=Academic::find($id);
-            if(!$academic){
-                return response()->json(["No Data"],200);
-
-
-            }
-            $academic=[$academic];
-
-
+    public function academics_show(Request $request, $id = null)
+{
+    if ($id == null) {
+        $academic = Academic::get();
+    } else {
+        $academic = Academic::find($id);
+        if (!$academic) {
+            return response()->json(["message" => "No Data"], 404);
         }
-        
-
+        $academic = [$academic];
     }
+
+    // Assuming you want to return JSON
+    return response()->json($academic, 200);
+}
+
     public function academics_stor(Request $request)
     {
         if ($request->isMethod('post')) {
