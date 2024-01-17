@@ -5,16 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class WorkExperience extends Model
+class workexperien extends Model
 {
     use HasFactory;
 
-    protected $table = 'work_experiences';
-
-   
     public function user()
     {
         return $this->belongsTo (User::class);
     }
-   
 }

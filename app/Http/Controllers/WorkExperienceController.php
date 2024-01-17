@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\ValidationException;
-use App\Models\WorkExperience;
+use App\Models\workexperien;
 
 
 
@@ -38,7 +38,7 @@ class WorkExperienceController extends Controller
                 
                 $validator->validate();
             
-                $user = new WorkExperience();
+                $user = new workexperien();
                
                 $user->user_id = $data['user_id'];
                 $user->startdate = $data['startdate'];
