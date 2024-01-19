@@ -36,6 +36,10 @@ Route::delete('/deletduser/{id}',[UserController::class,'deletduser']);
 
 Route::post('/academics_stor',[AcademicsController::class,'academics_stor']);
 Route::get('/academics_show/{id?}',[AcademicsController::class,'academics_show']);
+Route::put('/academics_update/{id}',[AcademicsController::class,'academics_update']);
+Route::delete('/deleteAcademics/{id}',[AcademicsController::class,'deleteAcademics']);
+
+
 
 
 
