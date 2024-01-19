@@ -134,7 +134,7 @@ class UserController extends Controller
                 $user->save();
     
                 $message = "User  Successfully Update";
-                return response()->json(['message' => $message], 202);
+                return response()->json(['message' => $message,"user"=>$user], 202);
             } catch (ValidationException $e) {
                 // Handle validation errors
                 return response()->json($e->errors(), 422);
@@ -168,8 +168,8 @@ class UserController extends Controller
                
                 $user->save();
     
-                $message = "User  Successfully Update";
-                return response()->json(['message' => $message], 202);
+                $message = "Name update  Successfully";
+                return response()->json(['message' => $message,'userupdate'=>$user], 202);
             } catch (ValidationException $e) {
                 // Handle validation errors
                 return response()->json($e->errors(), 422);
