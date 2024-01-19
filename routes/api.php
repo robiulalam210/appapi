@@ -22,19 +22,23 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 
+// User Data Add Get Update Single & Update All Data Delete
+
 Route::get('/getuser/{id?}',[UserController::class,'getuser']);
 Route::post('/adduser',[UserController::class,'addUser']);
 Route::patch('/updatesingledata/{id}',[UserController::class,'updatesingledata']);
-
-
-
 Route::put('/updateuser/{id}',[UserController::class,'updateuser']);
-// Route::patch('/updatesingledata/{id}',[UserController::class,'updatesingledata']);
 Route::delete('/deletduser/{id}',[UserController::class,'deletduser']);
+
+
+
+// User Data Add Get Update Single & Update All Data Delete
 
 Route::post('/academics_stor',[AcademicsController::class,'academics_stor']);
 Route::get('/academics_show/{id?}',[AcademicsController::class,'academics_show']);
-// Route::post('/academics',[AcademicsController::class,'academics']);
+
+
+
 
 Route::post('/uploadImages', [ImageController::class, 'uploadImages']);
 
