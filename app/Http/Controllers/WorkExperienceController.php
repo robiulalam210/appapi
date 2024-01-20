@@ -13,6 +13,25 @@ class WorkExperienceController extends Controller
 {
     //
 
+    public function workexperience_get(Request $request,$id=null){
+
+        if($id==null){
+
+            $work=workexperien::get();
+
+        }else{
+            $work =workexperien::find($id);
+            if (!$work) {
+                return response()->json(['error' => 'Work Exprence not found'], 404);
+            }
+    
+            $work = [$work];
+        }
+        $message="Work Exprence Data";
+
+        return response->json(["message"=>$message,"data"=>$work],200);
+    }
+
     public function workexperience_stor(Request $request)
     {
         if ($request->isMethod('post')) {

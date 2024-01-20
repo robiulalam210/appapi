@@ -42,8 +42,6 @@ Route::delete('/deleteAcademics/{id}',[AcademicsController::class,'deleteAcademi
 
 
 
-
-
 Route::post('/uploadImages', [ImageController::class, 'uploadImages']);
 
 Route::post('/workexperience_stor',[WorkExperienceController::class,'workexperience_stor']);
