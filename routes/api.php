@@ -22,6 +22,11 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 
+Route::post('/login', [UserController::class, 'login']);
+Route::post('/registion',[UserController::class,'addUser']);
+
+
+
 // User Data Add Get Update Single & Update All Data Delete
 
 Route::get('/getuser/{id?}',[UserController::class,'getuser']);
@@ -45,7 +50,7 @@ Route::delete('/deleteAcademics/{id}',[AcademicsController::class,'deleteAcademi
 Route::post('/uploadImages', [ImageController::class, 'uploadImages']);
 
 Route::post('/workexperience_stor',[WorkExperienceController::class,'workexperience_stor']);
-Route::get('/workexperience_get',[WorkExperienceController::class,'workexperience_get']);
+Route::get('/workexperience_get/{id?}',[WorkExperienceController::class,'workexperience_get']);
 
 
 

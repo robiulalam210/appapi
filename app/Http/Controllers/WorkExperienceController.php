@@ -13,24 +13,24 @@ class WorkExperienceController extends Controller
 {
     //
 
-    public function workexperience_get(Request $request,$id=null){
-
-        if($id==null){
-
-            $work=workexperien::get();
-
-        }else{
-            $work =workexperien::find($id);
-            if (!$work) {
-                return response()->json(['error' => 'Work Exprence not found'], 404);
+    public function workexperience_get(Request $request, $id = null)
+    {
+        if ($id === null) {
+            $work = workexperien::get();
+        } else {
+            try {
+                $work = workexperien::findOrFail($id);
+                $work = [$work];
+            } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
+                return response()->json(['error' => 'Work Experience not found '], 404);
             }
-    
-            $work = [$work];
         }
-        $message="Work Exprence Data";
-
-        return response->json(["message"=>$message,"data"=>$work],200);
+        
+        $message = "Work Experience Data";
+    
+        return response()->json(["message" => $message, "data" => $work], 200);
     }
+    
 
     public function workexperience_stor(Request $request)
     {

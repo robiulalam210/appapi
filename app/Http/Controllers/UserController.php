@@ -7,10 +7,28 @@ use App\Models\User;
 use App\Models\Academic;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\ValidationException;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
     //
+
+    public function login(Request $request)
+    {
+        $request->validate([
+            'email' => 'required|email',
+            'password' => 'required|string',
+        ]);
+
+        if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
+            $user = Auth::user();
+            // $token = $user->createToken('authToken')->accessToken;
+
+            return response()->json(['message' => 'Login successful', 'user' => $user]);
+        } else {
+            return response()->json(['error' => 'Unauthorized'], 401);
+        }
+    }
 
     public function getuser(Request $request, $id = null)
 {
